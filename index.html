@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14243a">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>مدیریت کارگاه لیزری | نسخه شخصی</title>
+<style>
+:root{--navy:#14243a;--navy2:#203954;--gold:#e0ad45;--bg:#f3f6fa;--card:#fff;--text:#1c2a3a;--muted:#758397;--line:#e5eaf0;--green:#14836d;--red:#c84d52;--blue:#3976c5;--shadow:0 8px 24px rgba(21,42,68,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;color:var(--text);font-size:14px;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.top{background:linear-gradient(140deg,var(--navy),#254968);color:#fff;padding:22px 18px 24px;border-radius:0 0 26px 26px;box-shadow:var(--shadow)}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-size:20px;font-weight:800;letter-spacing:-.3px}.sub{color:#d7e2ed;font-size:12px;margin-top:6px}.chip{background:#ffffff18;border:1px solid #ffffff25;border-radius:30px;padding:7px 10px;font-size:11px;white-space:nowrap}
+.wrap{max-width:760px;margin:auto}.content{padding:16px 14px}.page-title{display:flex;justify-content:space-between;align-items:center;margin:2px 2px 14px;gap:10px}.page-title h2{font-size:18px;margin:0}.muted{color:var(--muted);font-size:12px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.stat{background:#fff;border:1px solid #ffffff22;border-radius:17px;padding:14px;min-height:94px;box-shadow:0 4px 14px #061a2d12}.stat .label{font-size:12px;color:#68798d}.stat .value{font-size:21px;font-weight:800;margin-top:10px;color:var(--navy);overflow-wrap:anywhere}.stat .hint{font-size:11px;color:var(--muted);margin-top:4px}
+.section{margin-top:22px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 10px}.section-head h3{font-size:15px;margin:0}.quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.quick button{border:0;background:#fff;border-radius:15px;padding:13px 5px;box-shadow:var(--shadow);color:var(--navy);font-weight:700;min-height:84px}.quick .ico{display:block;font-size:22px;margin-bottom:8px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:14px;margin-bottom:10px;box-shadow:0 3px 12px rgba(20,36,58,.035)}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.row strong{font-size:14px}.badge{font-size:11px;border-radius:20px;padding:5px 8px;background:#edf3fa;color:#34526e}.money{font-weight:800;color:var(--navy);white-space:nowrap}.empty{text-align:center;padding:28px 14px;color:var(--muted);background:#fff;border:1px dashed #d4dde8;border-radius:16px}
+.bottom{position:fixed;z-index:20;bottom:0;left:0;right:0;background:#ffffffee;backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr);max-width:760px;margin:auto}.bottom button{border:0;background:transparent;color:#7a8797;font-size:10px;padding:5px 1px;border-radius:12px}.bottom button span{display:block;font-size:20px;margin-bottom:3px}.bottom button.active{background:#edf3fa;color:var(--navy);font-weight:800}
+.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:700}.primary{background:var(--navy);color:white}.gold{background:var(--gold);color:#17283c}.soft{background:#edf3fa;color:var(--navy)}.danger{background:#fff0f0;color:var(--red)}.full{width:100%}.search{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 13px;margin-bottom:12px;outline:none}
+label{display:block;font-size:12px;color:#536277;margin:0 0 6px}input,select,textarea{width:100%;border:1px solid #dce4ed;background:#fff;border-radius:11px;padding:12px;color:var(--text);outline:none;min-height:44px}input:focus,select:focus,textarea:focus{border-color:#7ea2cc;box-shadow:0 0 0 3px #3976c51a}textarea{resize:vertical;min-height:76px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{min-width:0}.field.wide{grid-column:1/-1}.form-actions{display:flex;gap:9px;margin-top:18px}.form-actions>*{flex:1}
+.modal{position:fixed;inset:0;z-index:50;background:#0d1a2acc;display:none;align-items:flex-end;justify-content:center}.modal.show{display:flex}.sheet{width:100%;max-width:650px;max-height:92dvh;overflow:auto;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 15px calc(20px + env(safe-area-inset-bottom));animation:up .2s ease}.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.sheet-head h3{margin:0;font-size:18px}.x{border:0;background:#e8edf3;border-radius:50%;width:36px;height:36px;font-size:20px}
+.list-head{display:flex;gap:8px}.list-head .search{flex:1}.count{font-size:12px;color:var(--muted);padding:10px 0}.item-actions{display:flex;gap:6px;margin-top:10px}.item-actions button{font-size:11px;padding:7px 10px}.smallmeta{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.7}.amount-positive{color:var(--green)}.amount-negative{color:var(--red)}.notice{background:#fff8e7;border:1px solid #f3dfad;color:#735619;border-radius:13px;padding:12px;font-size:12px;line-height:1.8;margin-bottom:12px}.reportrow{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.reportrow:last-child{border-bottom:0}.hidden{display:none!important}
+@keyframes up{from{transform:translateY(20px);opacity:.6}to{transform:translateY(0);opacity:1}}
+@media(min-width:600px){.stats{grid-template-columns:repeat(3,1fr)}.modal{align-items:center;padding:18px}.sheet{border-radius:22px}.content{padding:20px}.top{border-radius:0 0 28px 28px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div class="topline"><div><div class="brand">مدیریت کارگاه</div><div class="sub">حسابداری، سفارشات و انبار در یک‌جا</div></div><div class="chip">واحد پول: افغانی</div></div>
+ <div id="dashboardStats" class="stats"></div>
+</header>
+<main class="content" id="app"></main>
+</div>
+<nav class="bottom" id="nav">
+ <button data-page="home" class="active"><span>⌂</span>خانه</button>
+ <button data-page="orders"><span>▤</span>سفارشات</button>
+ <button data-page="money"><span>↔</span>پول و مصارف</button>
+ <button data-page="stock"><span>▦</span>انبار</button>
+ <button data-page="more"><span>☷</span>بیشتر</button>
+</nav>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+ <div class="sheet"><div class="sheet-head"><h3 id="modalTitle">ثبت اطلاعات</h3><button class="x" id="closeModal" aria-label="بستن">×</button></div><div id="modalBody"></div></div>
+</div>
+<script>
+const KEY='karگاه_app_v1';
+const fresh=()=>({customers:[],orders:[],receipts:[],expenses:[],items:[],moves:[],notes:[]});
+let db; try{db=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){db=fresh()}
+let page='home', searchText='';
+const $=s=>document.querySelector(s);
+const fmt=n=>new Intl.NumberFormat('fa-AF',{maximumFractionDigits:2}).format(Number(n||0));
+const money=n=>fmt(n)+' افغانی';
+const today=()=>{let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
+const sum=(arr,key)=>arr.reduce((s,x)=>s+Number(x[key]||0),0);
+const uid=prefix=>prefix+'-'+Date.now().toString().slice(-8);
+const orderPaid=o=>sum(db.receipts.filter(r=>r.orderId===o.id),'amount');
+const orderRemain=o=>Number(o.total||0)-orderPaid(o);
+const stockFor=i=>Number(i.opening||0)+sum(db.moves.filter(m=>m.itemId===i.id&&['ورود به انبار','برگشت'].includes(m.type)),'qty')-sum(db.moves.filter(m=>m.itemId===i.id&&['مصرف تولید','ضایعات'].includes(m.type)),'qty');
+function stats(){return [
+['فروش سفارشات',sum(db.orders,'total'),'▤'],
+['دریافت پول',sum(db.receipts,'amount'),'↙'],
+['مصارف ثبت‌شده',sum(db.expenses,'amount'),'↗'],
+['طلب مشتریان',db.orders.reduce((s,o)=>s+Math.max(0,orderRemain(o)),0),'◷'],
+['سفارشات باز',db.orders.filter(o=>o.status!=='تحویل‌شده'&&o.status!=='لغو‌شده').length,'⚙'],
+['اقلام انبار',db.items.length,'▦']
+]}
+function renderStats(){ $('#dashboardStats').innerHTML=stats().slice(0,4).map((x,i)=>`<div class="stat"><div class="label">${x[2]} ${x[0]}</div><div class="value">${i===4?x[1]:fmt(x[1])}</div><div class="hint">${i===3?'باقی‌مانده سفارش‌ها':i===2?'افغانی':'مجموع تا اکنون'}</div></div>`).join('')}
+function empty(text){return `<div class="empty">${text}</div>`}
+function card(title,meta,amount,actions=''){return `<div class="card"><div class="row"><strong>${esc(title)}</strong><span class="money">${amount||''}</span></div><div class="smallmeta">${meta||''}</div>${actions?`<div class="item-actions">${actions}</div>`:''}</div>`}
+function button(label,act,cls='soft'){return `<button class="btn ${cls}" data-act="${act}">${label}</button>`}
+function render(){
+ renderStats(); $('#nav').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+ let el=$('#app');
+ if(page==='home'){
+  el.innerHTML=`<div class="page-title"><div><h2>سلام! خوش آمدید</h2><div class="muted">خلاصه وضعیت کارگاه شما</div></div><span class="badge">${esc(today())}</span></div>
+  <div class="section"><div class="section-head"><h3>ثبت سریع</h3></div><div class="quick">
+  <button data-act="new-order"><span class="ico">＋</span>سفارش جدید</button><button data-act="new-receipt"><span class="ico">⇩</span>دریافت پول</button><button data-act="new-expense"><span class="ico">↗</span>ثبت مصرف</button>
+  <button data-act="new-customer"><span class="ico">♙</span>مشتری جدید</button><button data-act="new-item"><span class="ico">▦</span>ماده انبار</button><button data-act="new-move"><span class="ico">⇄</span>حرکت انبار</button></div></div>
+  <div class="section"><div class="section-head"><h3>آخرین سفارشات</h3><button class="btn soft" data-page="orders">همه</button></div>
+  ${db.orders.length?db.orders.slice(-4).reverse().map(o=>card(o.name||o.id,`${o.id} · ${o.date||''} · ${o.status||'ثبت‌شده'}`,money(o.total),`<button class="btn soft" data-act="edit-order" data-id="${o.id}">جزئیات</button>`)).join(''):empty('هنوز سفارشی ثبت نشده است. از «سفارش جدید» شروع کنید.')}</div>
+  <div class="section"><div class="section-head"><h3>یادآوری مهم</h3></div><div class="notice">برای اینکه طلب مشتری درست حساب شود، دریافت پول را به شماره سفارش وصل کنید. برای موجودی دقیق نیز ورود و مصرف مواد را در «حرکت انبار» ثبت نمایید.</div></div>`;
+ } else if(page==='orders'){
+  el.innerHTML=`<div class="page-title"><div><h2>سفارشات</h2><div class="muted">ثبت سفارش، قیمت و باقی‌مانده خودکار</div></div>${button('＋ سفارش','new-order','primary')}</div><input class="search" id="search" placeholder="جستجو نام مشتری یا شماره سفارش..." value="${esc(searchText)}"><div class="count">${db.orders.length} سفارش ثبت شده</div>
+  ${filter(db.orders,o=>(o.name+' '+o.id+' '+o.product).toLowerCase().includes(searchText.toLowerCase())).slice().reverse().map(o=>card(o.name||'مشتری بدون نام',`${o.id} · ${o.date||''}<br>${esc(o.product||'')} · ${esc(o.status||'ثبت‌شده')} · باقی‌مانده: ${money(orderRemain(o))}`,money(o.total),`<button class="btn soft" data-act="edit-order" data-id="${o.id}">ویرایش</button><button class="btn danger" data-act="delete" data-type="orders" data-id="${o.id}">حذف</button>`)).join('')||empty('سفارشی پیدا نشد.')}`;
+ } else if(page==='money'){
+  el.innerHTML=`<div class="page-title"><div><h2>پول و مصارف</h2><div class="muted">دریافت‌ها و پرداخت‌های روزمره</div></div></div><div class="quick"><button data-act="new-receipt"><span class="ico">⇩</span>دریافت پول</button><button data-act="new-expense"><span class="ico">↗</span>ثبت مصرف</button><button data-act="report"><span class="ico">▥</span>گزارش</button></div>
+  <div class="section"><div class="section-head"><h3>آخرین دریافت‌ها</h3></div>${db.receipts.slice().reverse().slice(0,12).map(r=>card(r.customer||'دریافت',`${r.date||''} · ${r.orderId||'بدون سفارش'} · ${r.method||'نقدی'}`,money(r.amount),`<button class="btn danger" data-act="delete" data-type="receipts" data-id="${r.id}">حذف</button>`)).join('')||empty('هنوز دریافت پول ثبت نشده است.')}</div>
+  <div class="section"><div class="section-head"><h3>مصارف</h3></div>${db.expenses.slice().reverse().slice(0,12).map(e=>card(e.category,`${e.date||''} · ${esc(e.note||'')}`,money(e.amount),`<button class="btn danger" data-act="delete" data-type="expenses" data-id="${e.id}">حذف</button>`)).join('')||empty('هنوز مصرفی ثبت نشده است.')}</div>`;
+ } else if(page==='stock'){
+  el.innerHTML=`<div class="page-title"><div><h2>مدیریت انبار</h2><div class="muted">مواد اولیه و مقدار موجود</div></div>${button('＋ ماده جدید','new-item','primary')}</div><div class="quick"><button data-act="new-move"><span class="ico">⇄</span>ورود/خروج</button><button data-act="stock-report"><span class="ico">▦</span>گزارش موجودی</button><button data-act="export"><span class="ico">⇧</span>پشتیبان</button></div>
+  <div class="section"><div class="section-head"><h3>فهرست مواد</h3></div>${db.items.map(i=>card(i.name,`کد: ${i.id} · واحد: ${i.unit||'عدد'} · حداقل: ${fmt(i.minimum||0)}`,`${fmt(stockFor(i))} ${esc(i.unit||'')}`,`<button class="btn soft" data-act="edit-item" data-id="${i.id}">ویرایش</button><button class="btn danger" data-act="delete" data-type="items" data-id="${i.id}">حذف</button>`)).join('')||empty('ماده‌ای ثبت نشده است. ابتدا «ماده جدید» را بزنید.')}</div>
+  <div class="section"><div class="section-head"><h3>آخرین حرکت‌ها</h3></div>${db.moves.slice().reverse().slice(0,8).map(m=>{let i=db.items.find(x=>x.id===m.itemId);return card(i?.name||'ماده حذف‌شده',`${m.date} · ${m.type}`,`${fmt(m.qty)} ${esc(i?.unit||'')}`)}).join('')||empty('حرکت انبار ثبت نشده است.')}</div>`;
+ } else {
+  el.innerHTML=`<div class="page-title"><div><h2>بخش‌های دیگر</h2><div class="muted">مدیریت مشتریان و گزارش‌ها</div></div></div><div class="quick"><button data-act="customers"><span class="ico">♙</span>مشتریان</button><button data-act="report"><span class="ico">▥</span>گزارش‌ها</button><button data-act="export"><span class="ico">⇧</span>پشتیبان‌گیری</button><button data-act="import"><span class="ico">⇩</span>بازیابی نسخه</button><button data-act="settings"><span class="ico">⚙</span>تنظیمات</button><button data-act="help"><span class="ico">؟</span>راهنما</button></div>
+  <div class="section"><div class="section-head"><h3>مشتریان</h3>${button('＋ مشتری','new-customer')}</div>${db.customers.slice().reverse().slice(0,10).map(c=>card(c.name,`${c.phone||'بدون تماس'} · ${c.address||''}`,``, `<button class="btn soft" data-act="edit-customer" data-id="${c.id}">ویرایش</button><button class="btn danger" data-act="delete" data-type="customers" data-id="${c.id}">حذف</button>`)).join('')||empty('مشتری ثبت نشده است.')}</div>`;
+ }
+}
+function filter(arr,fn){return arr.filter(fn)}
+function openModal(title,content){$('#modalTitle').textContent=title;$('#modalBody').innerHTML=content;$('#modal').classList.add('show');}
+function closeModal(){$('#modal').classList.remove('show')}
+function field(label,name,type='text',value='',opts=null,required=false,wide=false){
+ let inp=opts?`<select name="${name}" ${required?'required':''}>${opts.map(o=>`<option value="${esc(o)}" ${o===value?'selected':''}>${esc(o)}</option>`).join('')}</select>`:`<input name="${name}" type="${type}" value="${esc(value)}" ${required?'required':''} ${type==='number'?'step="any" min="0"':''} ${type==='date'&&!value?`value="${today()}"`:''} placeholder="${label}">`;
+ return `<div class="field ${wide?'wide':''}"><label>${label}${required?' *':''}</label>${inp}</div>`;
+}
+function formWrap(fields,saveLabel='ذخیره اطلاعات'){return `<form id="dataForm"><div class="formgrid">${fields.join('')}</div><div class="form-actions"><button class="btn primary" type="submit">${saveLabel}</button><button class="btn soft" type="button" id="cancelForm">انصراف</button></div></form>`}
+function customerOptions(){return ['انتخاب مشتری',...db.customers.map(c=>c.id+' | '+c.name)]}
+function showForm(type,id=null){
+ let old=id?db[type].find(x=>x.id===id):null; old=old||{}; let f=[], title='';
+ if(type==='orders'){
+ title=id?'ویرایش سفارش':'سفارش جدید';
+ f=[field('شماره سفارش','id','text',old.id||uid('S'),null,true),field('تاریخ سفارش','date','date',old.date||today(),null,true),field('نام مشتری','name','text',old.name||'',null,true),field('شماره تماس','phone','tel',old.phone||''),field('نوع خدمت/محصول','product','text',old.product||'',null,true),field('تعداد','qty','number',old.qty??1,null,true),field('قیمت فی واحد (افغانی)','unitPrice','number',old.unitPrice??0,null,true),field('وضعیت سفارش','status','text',old.status||'ثبت‌شده',['ثبت‌شده','در حال طراحی','در حال تولید','آماده تحویل','تحویل‌شده','لغو‌شده']),field('تاریخ تحویل','due','date',old.due||''),field('یادداشت','note','text',old.note||'',null,false,true)];
+ }else if(type==='customers'){
+ title=id?'ویرایش مشتری':'مشتری جدید';
+ f=[field('نام مشتری/شرکت','name','text',old.name||'',null,true),field('شماره تماس','phone','tel',old.phone||''),field('نام فروشگاه','shop','text',old.shop||''),field('آدرس','address','text',old.address||'',null,false,true),field('یادداشت','note','text',old.note||'',null,false,true)];
+ }else if(type==='receipts'){
+ title='ثبت دریافت پول';
+ f=[field('شماره رسید','id','text',uid('R'),null,true),field('تاریخ','date','date',today(),null,true),field('سفارش مربوط','orderId','text','',null,false),field('نام پرداخت‌کننده','customer','text','',null,false),field('مبلغ دریافتی (افغانی)','amount','number',0,null,true),field('روش دریافت','method','text','نقدی',['نقدی','بانک/حواله','موبایل‌مانی','سایر']),field('یادداشت','note','text','',null,false,true)];
+ }else if(type==='expenses'){
+ title='ثبت مصرف';
+ f=[field('شماره سند','id','text',uid('C'),null,true),field('تاریخ','date','date',today(),null,true),field('دسته مصرف','category','text','مواد اولیه',['مواد اولیه','برق','کرایه','معاش','ترمیم ماشین','ترانسپورت','مصارف اداری','سایر'],true),field('مبلغ (افغانی)','amount','number',0,null,true),field('پرداخت به','paidTo','text',''),field('روش پرداخت','method','text','نقدی',['نقدی','قرضی','بانک/حواله','سایر']),field('شرح','note','text','',null,false,true)];
+ }else if(type==='items'){
+ title=id?'ویرایش ماده':'ماده جدید';
+ f=[field('نام ماده','name','text',old.name||'',null,true),field('واحد','unit','text',old.unit||'عدد',null,true),field('موجودی آغازین','opening','number',old.opening??0,null,true),field('حداقل موجودی','minimum','number',old.minimum??0,null,true),field('قیمت تقریبی فی واحد','price','number',old.price??0),field('یادداشت','note','text',old.note||'',null,false,true)];
+ }else if(type==='moves'){
+ title='ثبت حرکت انبار';
+ f=[field('ماده','itemId','text',db.items[0]?.id||'',db.items.map(i=>i.id+' | '+i.name),true),field('تاریخ','date','date',today(),null,true),field('نوع حرکت','type','text','ورود به انبار',['ورود به انبار','مصرف تولید','برگشت','ضایعات'],true),field('مقدار','qty','number',0,null,true),field('قیمت فی واحد (اختیاری)','price','number',0),field('مرتبط با سفارش/خرید','ref','text',''),field('یادداشت','note','text','',null,false,true)];
+ }
+ if(type==='moves'){/* select values are ids + labels; corrected below */ f[0]=field('ماده','itemId','text',old.itemId||db.items[0]?.id||'',db.items.map(i=>i.id+' | '+i.name).map(s=>s),true); }
+ openModal(title,formWrap(f,id?'ذخیره تغییرات':'ذخیره'));
+ const form=$('#dataForm'); $('#cancelForm').onclick=closeModal;
+ form.onsubmit=e=>{e.preventDefault();let d=Object.fromEntries(new FormData(form).entries());
+ if(type==='orders'){d.qty=+d.qty;d.unitPrice=+d.unitPrice;d.total=d.qty*d.unitPrice;if(!id&&db.orders.some(x=>x.id===d.id)){alert('شماره سفارش تکراری است.');return}}
+ if(type==='receipts'||type==='expenses'){d.amount=+d.amount;if(type==='receipts'&&d.orderId&&!db.orders.some(o=>o.id===d.orderId)){alert('شماره سفارش پیدا نشد؛ شماره را درست وارد کنید یا خالی بگذارید.');return}}
+ if(type==='items'){d.opening=+d.opening;d.minimum=+d.minimum;d.price=+d.price}
+ if(type==='moves'){let chosen=d.itemId.split(' | ')[0];d.itemId=chosen;d.qty=+d.qty;d.price=+d.price;d.id=uid('M')}
+ if(id){let ix=db[type].findIndex(x=>x.id===id);if(ix>=0)db[type][ix]={...db[type][ix],...d,id:db[type][ix].id}}
+ else db[type].push({...d,id:d.id||uid(type[0].toUpperCase())});
+ save();closeModal();render();
+ };
+}
+function report(){
+ let now=new Date(), ym=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+ const years=[...new Set([String(now.getFullYear()),...db.orders.map(x=>(x.date||'').slice(0,4)),...db.receipts.map(x=>(x.date||'').slice(0,4)),...db.expenses.map(x=>(x.date||'').slice(0,4))].filter(Boolean))].sort().reverse();
+ openModal('گزارش مالی',`<div class="formgrid" style="margin-bottom:12px"><div class="field"><label>نوع گزارش</label><select id="reportMode"><option value="month">ماهانه</option><option value="year">سالانه</option><option value="all">تمام مدت</option></select></div><div class="field" id="reportMonthField"><label>ماه</label><input id="reportMonth" type="month" value="${ym}"></div><div class="field hidden" id="reportYearField"><label>سال</label><select id="reportYear">${years.map(y=>`<option value="${y}">${y}</option>`).join('')}</select></div></div><div id="reportResult"></div><div class="form-actions"><button class="btn primary" type="button" data-act="close">بستن</button><button class="btn soft" type="button" data-act="export-csv">خروجی CSV</button></div>`);
+ const update=()=>{
+  const mode=$('#reportMode').value, month=$('#reportMonth').value, year=$('#reportYear').value;
+  $('#reportMonthField').classList.toggle('hidden',mode!=='month');$('#reportYearField').classList.toggle('hidden',mode!=='year');
+  const match=d=>mode==='all'?true:mode==='year'?(d||'').startsWith(year):(d||'').startsWith(month);
+  const orders=db.orders.filter(o=>match(o.date)), receipts=db.receipts.filter(o=>match(o.date)), expenses=db.expenses.filter(o=>match(o.date));
+  const outstanding=db.orders.reduce((s,o)=>s+Math.max(0,orderRemain(o)),0);
+  $('#reportResult').innerHTML=`<div class="card">${[['فروش سفارشات',money(sum(orders,'total'))],['دریافت پول',money(sum(receipts,'amount'))],['مصارف ثبت‌شده',money(sum(expenses,'amount'))],['تفاوت دریافت و مصرف',money(sum(receipts,'amount')-sum(expenses,'amount'))],['طلب باقی‌مانده تمام سفارشات',money(outstanding)],['تعداد سفارشات در دوره',fmt(orders.length)]].map(x=>`<div class="reportrow"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join('')}</div><div class="notice">«تفاوت دریافت و مصرف» سود خالص نیست؛ برای سود واقعی باید بهای مواد مصرف‌شده و سایر هزینه‌های مربوط به تولید نیز دقیق ثبت شود. طلب باقی‌مانده، مجموع تمام سفارش‌های باز را نشان می‌دهد.</div>`;
+ };
+ $('#reportMode').onchange=update;$('#reportMonth').onchange=update;$('#reportYear').onchange=update;update();
+}
+function exportBackup(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});downloadBlob(blob,'پشتیبان-مدیریت-کارگاه.json')}
+function downloadBlob(blob,name){let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)}
+function csvExport(){let rows=[['بخش','شماره','تاریخ','شرح','مبلغ'],...db.orders.map(o=>['سفارش',o.id,o.date,o.name+' - '+o.product,o.total]),...db.receipts.map(o=>['دریافت',o.id,o.date,o.customer,o.amount]),...db.expenses.map(o=>['مصرف',o.id,o.date,o.category,o.amount])];let csv='\ufeff'+rows.map(r=>r.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');downloadBlob(new Blob([csv],{type:'text/csv;charset=utf-8'}),'گزارش-کارگاه.csv')}
+function importBackup(){openModal('بازیابی نسخه پشتیبان',`<div class="notice">فایل پشتیبان JSON را که قبلاً از همین اپ گرفته‌اید انتخاب کنید. بازیابی، اطلاعات فعلی را جایگزین می‌کند.</div><input type="file" id="backupFile" accept=".json,application/json"><div class="form-actions"><button class="btn primary" id="restore">بازیابی اطلاعات</button><button class="btn soft" data-act="close">انصراف</button></div>`);$('#restore').onclick=()=>{let f=$('#backupFile').files[0];if(!f)return alert('ابتدا فایل را انتخاب کنید.');let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.orders||!d.customers)throw 0;if(!confirm('اطلاعات فعلی جایگزین شود؟'))return;db={...fresh(),...d};save();closeModal();render();alert('بازیابی انجام شد.')}catch(e){alert('فایل پشتیبان معتبر نیست.')}};r.readAsText(f)}}
+document.addEventListener('click',e=>{
+ let p=e.target.closest('[data-page]');if(p){page=p.dataset.page;searchText='';render();return}
+ let b=e.target.closest('[data-act]');if(!b)return;let a=b.dataset.act,id=b.dataset.id;
+ if(a==='new-order')showForm('orders');else if(a==='edit-order')showForm('orders',id);
+ else if(a==='new-customer')showForm('customers');else if(a==='edit-customer')showForm('customers',id);
+ else if(a==='new-receipt')showForm('receipts');else if(a==='new-expense')showForm('expenses');
+ else if(a==='new-item')showForm('items');else if(a==='edit-item')showForm('items',id);else if(a==='new-move'){if(!db.items.length){alert('ابتدا یک ماده در فهرست انبار ثبت کنید.');return}showForm('moves')}
+ else if(a==='report'||a==='stock-report')report();else if(a==='export'||a==='export-csv')a==='export'?exportBackup():csvExport();
+ else if(a==='import')importBackup();else if(a==='customers'){page='more';render()}
+ else if(a==='close')closeModal();else if(a==='help')openModal('راهنمای استفاده',`<div class="notice">۱) مشتری را ثبت کنید. ۲) سفارش را با شماره یکتا ثبت کنید. ۳) هر دریافت را با همان شماره سفارش ثبت کنید. ۴) مصرف‌ها را روزانه وارد کنید. ۵) مواد انبار را تعریف و هر ورود یا مصرف را ثبت کنید. ۶) از بخش بیشتر، نسخه پشتیبان بگیرید.</div><p class="muted">اطلاعات در حافظه همین مرورگر ذخیره می‌شود. حذف اطلاعات مرورگر ممکن است آن را پاک کند؛ پشتیبان‌گیری منظم ضروری است.</p>`);
+ else if(a==='settings')openModal('تنظیمات و نگهداری اطلاعات',`<div class="notice">این نسخه اطلاعات را فقط در همین مرورگر و همین گوشی نگه می‌دارد؛ همگام‌سازی میان چند گوشی یا حساب کارمند در آن فعال نیست.</div><button class="btn primary full" data-act="export">گرفتن نسخه پشتیبان</button><div style="height:10px"></div><button class="btn danger full" data-act="clear">پاک‌کردن همه اطلاعات</button>`);
+ else if(a==='clear'){if(confirm('همه اطلاعات این گوشی پاک شود؟ ابتدا نسخه پشتیبان بگیرید.')){db=fresh();save();closeModal();render()}}
+ else if(a==='delete'){if(confirm('این مورد حذف شود؟')){db[b.dataset.type]=db[b.dataset.type].filter(x=>x.id!==id);save();render()}}
+});
+document.addEventListener('input',e=>{if(e.target.id==='search'){searchText=e.target.value;let pos=e.target.selectionStart;render();let x=$('#search');if(x){x.focus();x.setSelectionRange(pos,pos)}}});
+$('#closeModal').onclick=closeModal;$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+render();
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) { window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {})); }
+</script>
+</body></html>

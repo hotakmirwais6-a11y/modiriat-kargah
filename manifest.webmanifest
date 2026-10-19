@@ -1,0 +1,13 @@
+{
+  "name": "مدیریت کارگاه لیزری",
+  "short_name": "مدیریت کارگاه",
+  "description": "سیستم شخصی سفارشات، حسابداری و انبار کارگاه",
+  "lang": "fa-AF",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fa",
+  "theme_color": "#14243a",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
